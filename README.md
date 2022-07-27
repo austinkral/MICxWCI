@@ -10,7 +10,7 @@ The motion-induced illusory contour arises from the horizontal rotation of a par
 <img src="/images/MIC.png" alt="Motion-induced illusory contour example" height="200"/>
 
 ## Methods
-For the present study, motion-induced illusory contour animations were created using Processing 5, an OpenGL-compatible graphics package for the Java language. The partial wireframe cubes were rendered in purple and displayed on a white background. An inset orange fringe was added to test whether the WCI would still be induced in moving stimuli. The partial cubes are then rotated back and forth within a forty-six-degree range across the XY-plane. Each test case will be displayed to research subjects for a fixed duration, all of whom will be vision tested to verify they have normal or corrected-to-normal vision. Subjects will then be asked to indicate whether or not the stimulus appeared tinged to them and, if so, rate the intensity of the perceived color on a given scale. In trials where color spreading is present, they will also be asked to indicate what the boundaries of the tinged region were.
+For the present study, motion-induced illusory contour animations were created using <a href="https://processing.org/" target="_blank">Processing 5</a>, an OpenGL-compatible graphics package for the Java programming language. The partial wireframe cubes were rendered in purple and displayed on a white background. An inset orange fringe was added to test whether the WCI would still be induced in moving stimuli. The partial cubes are then rotated back and forth within a forty-six-degree range across the XY-plane. Each test case will be displayed to research subjects for a fixed duration, all of whom will be vision tested to verify they have normal or corrected-to-normal vision. Subjects will then be asked to indicate whether or not the stimulus appeared tinged to them and, if so, rate the intensity of the perceived color on a given scale. In trials where color spreading is present, they will also be asked to indicate what the boundaries of the tinged region were.
 
 <img src="/images/renderPlain.gif" alt="Figure 1: MIC vs. MIC + WCI" height="400"/>
 
@@ -37,4 +37,4 @@ More unexpectedly, color spreading persists when the orange fringe is extended b
 ## Acknowledgments
 Thanks to:
 - <a href="https://jov.arvojournals.org/article.aspx?articleid=2720950" target="_blank">Gennady Erlikhman and Gideon P. Caplovitz (2019)</a> for allowing me to reference the source code for their MATLAB implementation of MIC stimuli.
-- <a href="https://sudhan.dev/" target="_blank">Sudhan Chitgopkar</a> for introducing me to Processing and for help in troubleshooting.
+- <a href="https://sudhan.dev/" target="_blank">Sudhan Chitgopkar</a> for introducing me to <a href="https://processing.org/" target="_blank">Processing</a> and for help in troubleshooting.
