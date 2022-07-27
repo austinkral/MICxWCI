@@ -37,4 +37,4 @@ More unexpectedly, color spreading persists when the orange fringe is extended b
 ## Acknowledgments
 Thanks to:
 - Gennady Erlikhman and Gideon P. Caplovitz (2019) for allowing me to reference the source code for their MATLAB implementation of MIC stimuli.
-- Sudhan Chitgopkar for introducing me to Processing and for help in troubleshooting.
+- <a href="https://sudhan.dev/">Sudhan Chitgopkar</a> for introducing me to Processing and for help in troubleshooting.
