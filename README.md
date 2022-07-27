@@ -3,11 +3,11 @@
 ## Background
 The watercolor illusion (WCI) causes a non-colored area enclosed by a contrasting border and inner fringe to appear slightly tinged by the color of the inner fringe and was first demonstrated by Pinna et al. in their paper “Surface color from boundaries: A new watercolor illusion” (2001).
 
-<img src="/images/WCI.png" alt="Watercolor illusion example" style="height: auto; width: 50%; display: block; margin-left: auto; margin-right: auto;"/>
+<img src="/images/WCI.png" alt="Watercolor illusion example" style="height: auto; width: 50%; margin: auto;"/>
 
 The motion-induced illusory contour arises from the horizontal rotation of a partially outlined wireframe cube in space, with the frontmost vertical edge removed. This phenomenon was first observed by Weisstein and Klymenko in their paper “The motion-induced contour” (1981).
 
-<img src="/images/MIC.png" alt="Motion-induced illusory contour example" style="height: auto; width: 50%; display: block; margin-left: auto; margin-right: auto;"/>
+<img src="/images/MIC.png" alt="Motion-induced illusory contour example" style="height: auto; width: 50%; margin: auto;"/>
 
 ## Methods
 For the present study, motion-induced illusory contour animations were created using <a href="https://processing.org/" target="_blank">Processing 5</a>, an OpenGL-compatible graphics package for the Java programming language. The partial wireframe cubes were rendered in purple and displayed on a white background. An inset orange fringe was added to test whether the WCI would still be induced in moving stimuli. The partial cubes are then rotated back and forth within a forty-six-degree range across the XY-plane. Each test case will be displayed to research subjects for a fixed duration, all of whom will be vision tested to verify they have normal or corrected-to-normal vision. Subjects will then be asked to indicate whether or not the stimulus appeared tinged to them and, if so, rate the intensity of the perceived color on a given scale. In trials where color spreading is present, they will also be asked to indicate what the boundaries of the tinged region were.
