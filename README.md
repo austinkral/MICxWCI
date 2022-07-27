@@ -2,17 +2,18 @@
 
 ## Background
 The watercolor illusion (WCI) causes a non-colored area enclosed by a contrasting border and inner fringe to appear slightly tinged by the color of the inner fringe and was first demonstrated by Pinna et al. in their paper “Surface color from boundaries: A new watercolor illusion” (2001).
-
+![Watercolor illusion stimuli](/images/WCI.png)
 The motion-induced illusory contour arises from the horizontal rotation of a partially outlined wireframe cube in space, with the frontmost vertical edge removed. This phenomenon was first observed by Weisstein and Klymenko in their paper “The motion-induced contour” (1981).
+![Motion-induced illusory contour stimuli](/images/MIC.png)
 
 ## Methods
 For the present study, motion-induced illusory contour animations were created using Processing 5, an OpenGL-compatible graphics package for the Java language. The partial wireframe cubes were rendered in purple and displayed on a white background. An inset orange fringe was added to test whether the WCI would still be induced in moving stimuli. The partial cubes are then rotated back and forth within a forty-six-degree range across the XY-plane. Each test case will be displayed to research subjects for a fixed duration, all of whom will be vision tested to verify they have normal or corrected-to-normal vision. Subjects will then be asked to indicate whether or not the stimulus appeared tinged to them and, if so, rate the intensity of the perceived color on a given scale. In trials where color spreading is present, they will also be asked to indicate what the boundaries of the tinged region were.
-
+![MIC vs. MIC + WCI](/images/renderPlain.gif "Figure 1: MIC vs. MIC + WCI")
 ## Expected Results
 The combination of the motion-induced illusory contour with the watercolor illusion demonstrates for the first time that the color spreading induced by the WCI can be replicated in moving stimuli, thus proving that it is spatiotemporally dynamic. Furthermore, the striped test case (depicted below) demonstrates two kinds of illusory edges, the first formed at the frontmost “corner” and induced by motion, and the second formed by the premature termination of the orange fringe. The latter result is consistent with static results obtained by Hale and Brown (2021), further supporting the conclusion that the WCI is spatiotemporally dynamic.
-
+![MIC + WCI stripes](/images/renderStripes.gif "Figure 2: MIC + WCI stripes")
 More unexpectedly, color spreading persists when the orange fringe is extended beyond the bounds of the purple edges. Typically, color spreading as a result of the WCI is limited to areas immediately bounded by a contrasting border and fringe, suggesting that color filling-in should not be observed past the termination of the purple border. One possible explanation for the phenomenology referenced above is offered by Grossberg’s FACADE model of figure-ground perception (Grossberg 1994), which postulates a boundary contour system (BCS), a motion boundary contour system (MBCS), and a feature contour system (FCS) that all work in tandem to produce coherent perceptions of 3-D objects. In the example below, it is possible that interactions between the MBCS and FCS cause the perception of a continuous surface extending beyond the purple edges, thus providing another mechanism (beyond the WCI) by which color spreading may occur.
-
+![MIC + WCI overhang](/images/renderOverhang.gif "Figure 3: MIC + WCI overhang")
 ## References
 1. Erlikhman, G., Fu, M., Dodd, M. D., & Caplovitz, G. P. (2019). The motion-induced contour revisited: Observations on 3-D structure and illusory contour formation in moving stimuli. Journal of Vision, 19(1), 1-17.
 2. Grossberg, S. (1994). 3-D vision and figure-ground separation by visual cortex. Perception & Psychophysics, 55(1), 48-120.
