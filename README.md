@@ -16,7 +16,7 @@ For the present study, motion-induced illusory contour animations were created u
 
 <figure>
 	<img src="/images/renderPlain.gif" alt="Figure 1: MIC vs. MIC + WCI" style="height: auto; width: 100%;"/>
-	<figcaption style="text-align: center;">Figure 1: MIC vs. MIC + WCI<br/><br/></figcaption>
+	<figcaption><em>Figure 1: MIC vs. MIC + WCI</em><br/><br/></figcaption>
 </figure>
 
 
@@ -24,7 +24,7 @@ The combination of the motion-induced illusory contour with the watercolor illus
 
 <figure>
 	<img src="/images/renderStripes.gif" alt="Figure 2: MIC + WCI stripes" style="height: auto; width: 100%;"/>
-	<figcaption>Figure 2: MIC + partial WCI<br/><br/></figcaption>
+	<figcaption><em>Figure 2: MIC + partial WCI</em><br/><br/></figcaption>
 </figure>
 
 
@@ -32,7 +32,7 @@ More unexpectedly, color spreading persists when the orange fringe is extended b
 
 <figure>
 	<img src="/images/renderOverhang.gif" alt="Figure 3: MIC + WCI overhang" style="height: auto; width: 100%;"/>
-	<figcaption>Figure 3: MIC + overhanging WCI<br/><br/></figcaption>
+	<figcaption><em>Figure 3: MIC + overhanging WCI</em><br/><br/></figcaption>
 </figure>
 
 ## References
