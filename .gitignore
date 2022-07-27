@@ -1,0 +1,6 @@
+# Ignore render directories
+render*/
+# Ignore GIFs
+*.gif
+# Ignore scale directory
+scale/
