@@ -2,6 +2,8 @@
 render*/
 # Ignore GIFs
 *.gif
+# Except for...
+!images/*.gif
 # Ignore scale directory
 scale/
 # Ignore miscellaneous
