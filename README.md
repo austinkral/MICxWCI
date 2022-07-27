@@ -16,7 +16,7 @@ For the present study, motion-induced illusory contour animations were created u
 
 <figure>
 	<img src="/images/renderPlain.gif" alt="Figure 1: MIC vs. MIC + WCI" style="height: auto; width: 100%;"/>
-	<figcaption>Figure 1: MIC vs. MIC + WCI<br/></figcaption>
+	<figcaption>Figure 1: MIC vs. MIC + WCI<br/><br/></figcaption>
 </figure>
 
 
