@@ -1,4 +1,0 @@
-# Ignore render directories
-render*/
-# Ignore GIFs
-*.gif

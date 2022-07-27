@@ -4,3 +4,6 @@ render*/
 *.gif
 # Ignore scale directory
 scale/
+# Ignore miscellaneous
+.DS_Store
+ffmpeg.txt
