@@ -39,28 +39,31 @@ class Cube {
     if (this.sides == 6) {
       p.beginShape();
       p.stroke(191, 85, 255);
-      for (int i = 0; i < border.length; i++) {
+      for (int i = 0; i < border.length; i++)
         p.vertex(border[i][0], border[i][1], border[i][2]);
-      } // for
       p.endShape(CLOSE);
     } else if (this.sides == 4) {
       p.beginShape();
       p.stroke(191, 85, 255);
-      for (int i = 0; i < border.length / 2; i++) {
+      for (int i = 0; i < border.length / 2; i++)
         p.vertex(border[i][0], border[i][1], border[i][2]);
-      } // for
       p.endShape();
       q.beginShape();
       q.stroke(191, 85, 255);
-      for (int i = 3; i < border.length; i++) {
+      for (int i = 3; i < border.length; i++)
         q.vertex(border[i][0], border[i][1], border[i][2]);
-      } // for
       q.endShape();
     } else if (this.sides == 2) {
-      beginShape();
-      line(cubeRad, cubeRad, cubeRad, -cubeRad, cubeRad, cubeRad);
-      line(cubeRad, -cubeRad, -cubeRad, cubeRad, -cubeRad, cubeRad);
-      endShape();
+      p.beginShape(LINES);
+      p.stroke(191, 85, 255);
+      for (int i = 1; i < border.length / 2; i++)
+        p.vertex(border[i][0], border[i][1], border[i][2]);
+      p.endShape();
+      q.beginShape(LINES);
+      q.stroke(191, 85, 255);
+      for (int i = 4; i < border.length; i++)
+        q.vertex(border[i][0], border[i][1], border[i][2]);
+      q.endShape();
     } // if
     if (p != null) shape(p);
     if (q != null) shape(q);

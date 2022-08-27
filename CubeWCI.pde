@@ -2,8 +2,11 @@ class CubeWCI {
   float xPos, yPos, zPos, rotAngle;
   int cubeRad, weight, sides, rotDir;
   String rotate, type;
-  float[][] border;
-  float[][] fringe;
+  float[][] edges;
+  float[][] plainSixEdgeFringe;
+  float[][] plainFourAndTwoEdgeFringe;
+  float[][] stripedSixEdgeFringe;
+  float[][] stripedFourAndTwoEdgeFringe;
 
   // CubeWCI constructor
   CubeWCI(float x, float y, float z, int r, int s, String rot, String t) {
@@ -17,7 +20,7 @@ class CubeWCI {
     rotAngle = 0;
     rotDir = 1;
     weight = cubeRad / 12;
-    border = new float[][] {
+    edges = new float[][] {
       {-cubeRad, -cubeRad, cubeRad}, // top left vertex
       {cubeRad, -cubeRad, cubeRad}, // top front vertex
       {cubeRad, -cubeRad, -cubeRad}, // top right vertex
@@ -25,7 +28,7 @@ class CubeWCI {
       {cubeRad, cubeRad, cubeRad}, // bottom front vertex
       {-cubeRad, cubeRad, cubeRad}, // bottom left vertex
     };
-    fringe = new float[][] {
+    plainSixEdgeFringe = new float[][] {
       {-cubeRad + weight * 0.9, -cubeRad + weight, cubeRad}, // top left vertex
       {cubeRad, -cubeRad + weight, cubeRad}, // top front vertex
       {cubeRad, -cubeRad + weight, -cubeRad + weight * 0.9}, // top right vertex
@@ -33,65 +36,77 @@ class CubeWCI {
       {cubeRad, cubeRad  - weight, cubeRad}, // bottom front vertex
       {-cubeRad + weight * 0.9, cubeRad  - weight, cubeRad} // bottom left vertex
     };
+    plainFourAndTwoEdgeFringe = new float[][] {
+      {-cubeRad, -cubeRad + weight, cubeRad}, // top left vertex
+      {cubeRad, -cubeRad + weight, cubeRad}, // top front vertex
+      {cubeRad, -cubeRad + weight, -cubeRad}, // top right vertex
+      {cubeRad, cubeRad - weight, -cubeRad}, // bottom right vertex
+      {cubeRad, cubeRad - weight, cubeRad}, // bottom front vertex
+      {-cubeRad, cubeRad  - weight, cubeRad} // bottom left vertex
+    };
+    stripedSixEdgeFringe = new float[][] {
+      {cubeRad - cubeRad, -cubeRad + weight, cubeRad},
+      {-cubeRad + weight, -cubeRad + weight, cubeRad},
+      {-cubeRad + weight, cubeRad - weight, cubeRad},
+      {cubeRad - cubeRad, cubeRad - weight, cubeRad},
+      {cubeRad, -cubeRad + weight, cubeRad - cubeRad},
+      {cubeRad, -cubeRad + weight, -cubeRad + weight},
+      {cubeRad, cubeRad - weight, -cubeRad + weight},
+      {cubeRad, cubeRad - weight, cubeRad - cubeRad}
+    };
+    stripedFourAndTwoEdgeFringe = new float[][] {
+      {-cubeRad, -cubeRad + weight, cubeRad}, // top left
+      {cubeRad - cubeRad, -cubeRad + weight, cubeRad},
+      {-cubeRad, cubeRad - weight, cubeRad}, // bottom left
+      {cubeRad - cubeRad, cubeRad - weight, cubeRad},
+      {cubeRad, -cubeRad + weight, -cubeRad}, // top right
+      {cubeRad, -cubeRad + weight, cubeRad - cubeRad},
+      {cubeRad, (cubeRad - weight), -cubeRad}, // bottom right
+      {cubeRad, cubeRad - weight, cubeRad - (cubeRad)}
+    };
   } // CubeWCI
 
   // Draw CubeWCI object to screen
   void display() {
-    pushMatrix();
     translate(xPos, yPos, zPos);
     strokeWeight(weight);
     rotateX(radians(-25)); // re-align
     rotateY(radians(-45)); // cube
-    PShape p = createShape();
-    PShape q = createShape();
-    if (rotate == "rotate") this.rotate();
+    PShape border = createShape();
+    PShape fringe = createShape();
+    PShape borderTop = createShape();
+    PShape borderBottom = createShape();
+    PShape leftFringe = createShape();
+    PShape rightFringe = createShape();
+    PShape fringeTop = createShape();
+    PShape fringeBottom = createShape();
     if (this.sides == 6) {
       // Border
-      p.beginShape();
-      p.stroke(191, 85, 255);
-      for (int i = 0; i < border.length; i++) {
-        p.vertex(border[i][0], border[i][1], border[i][2]);
-      } // for
-      p.endShape(CLOSE);
+      border.beginShape();
+      border.stroke(191, 85, 255);
+      for (int i = 0; i < edges.length; i++)
+        border.vertex(edges[i][0], edges[i][1], edges[i][2]);
+      border.endShape(CLOSE);
       // Fringe
       if (this.type == "plain") {
         // Plain
-        q.beginShape();
-        q.stroke(255, 165, 17);
-          for (int j = 0; j < fringe.length; j++) {
-            q.vertex(fringe[j][0], fringe[j][1], fringe[j][2]);
-          } // for
-        q.endShape(CLOSE);
+        fringe.beginShape();
+        fringe.stroke(255, 165, 17);
+        for (int j = 0; j < plainSixEdgeFringe.length; j++)
+          fringe.vertex(plainSixEdgeFringe[j][0], plainSixEdgeFringe[j][1], plainSixEdgeFringe[j][2]);
+        fringe.endShape(CLOSE);
       } else if (this.type == "stripes") {
-        // Stripes
-        // Right
-        beginShape();
-        vertex(cubeRad, cubeRad - weight, cubeRad - (cubeRad));
-        vertex(cubeRad, (cubeRad - weight), -cubeRad + weight);
-        vertex(cubeRad, -cubeRad + weight, -cubeRad + weight);
-        vertex(cubeRad, -cubeRad + weight, cubeRad - (cubeRad));
-        endShape();
-        // Left
-        beginShape();
-        vertex(cubeRad - (cubeRad), cubeRad - weight, cubeRad);
-        vertex(-cubeRad + weight, cubeRad - weight, cubeRad);
-        vertex(-cubeRad + weight, -cubeRad + weight, cubeRad);
-        vertex(cubeRad - (cubeRad), -cubeRad + weight, cubeRad);
-        endShape();
-      } else if (this.type == "overhang") {
-        // Overhang
-        // Bottom chevron (R -> L)
-        beginShape();
-        vertex(cubeRad, (cubeRad - weight), -cubeRad - cubeRad);
-        vertex(cubeRad, cubeRad - weight, cubeRad);
-        vertex(-cubeRad - cubeRad, cubeRad - weight, cubeRad);
-        endShape();
-        // Top chevron (L -> R)
-        beginShape();
-        vertex(cubeRad, -cubeRad + weight, -cubeRad - cubeRad);
-        vertex(cubeRad, -cubeRad + weight, cubeRad);
-        vertex(-cubeRad - cubeRad, -cubeRad + weight, cubeRad);
-        endShape();
+        // Striped
+        leftFringe.beginShape();
+        leftFringe.stroke(255, 165, 17);
+        for (int j = 0; j < stripedSixEdgeFringe.length / 2; j++)
+          leftFringe.vertex(stripedSixEdgeFringe[j][0], stripedSixEdgeFringe[j][1], stripedSixEdgeFringe[j][2]);
+        leftFringe.endShape();
+        rightFringe.beginShape();
+        rightFringe.stroke(255, 165, 17);
+        for (int j = stripedSixEdgeFringe.length / 2; j < stripedSixEdgeFringe.length; j++)
+          rightFringe.vertex(stripedSixEdgeFringe[j][0], stripedSixEdgeFringe[j][1], stripedSixEdgeFringe[j][2]);
+        rightFringe.endShape();
       } else if (this.type == "top") {
         // Top
         beginShape();
@@ -102,44 +117,45 @@ class CubeWCI {
       } // if
     } else if (this.sides == 4) {
       // Border
-      p.beginShape();
-      p.stroke(191, 85, 255);
-      for (int i = 0; i < border.length / 2; i++) {
-        p.vertex(border[i][0], border[i][1], border[i][2]);
-      } // for
-      p.endShape();
-      q.beginShape();
-      q.stroke(191, 85, 255);
-      for (int i = 3; i < border.length; i++) {
-        q.vertex(border[i][0], border[i][1], border[i][2]);
-      }
-      q.endShape();
+      borderTop.beginShape();
+      borderTop.stroke(191, 85, 255);
+      for (int i = 0; i < edges.length / 2; i++)
+        borderTop.vertex(edges[i][0], edges[i][1], edges[i][2]);
+      borderTop.endShape();
+      borderBottom.beginShape();
+      borderBottom.stroke(191, 85, 255);
+      for (int i = 3; i < edges.length; i++)
+        borderBottom.vertex(edges[i][0], edges[i][1], edges[i][2]);
+      borderBottom.endShape();
       // Fringe
-      stroke(255, 165, 17);
       if (this.type == "plain") {
         // Plain
-        // Bottom chevron (R -> L)
-        beginShape();
-        vertex(cubeRad, (cubeRad - weight), -cubeRad);
-        vertex(cubeRad, cubeRad - weight, cubeRad);
-        vertex(-cubeRad, cubeRad - weight, cubeRad);
-        endShape();
-        // Top chevron (L -> R)
-        beginShape();
-        vertex(cubeRad, -cubeRad + weight, -cubeRad);
-        vertex(cubeRad, -cubeRad + weight, cubeRad);
-        vertex(-cubeRad, -cubeRad + weight, cubeRad);
-        endShape();
+        fringeTop.beginShape();
+        fringeTop.stroke(255, 165, 17);
+        for (int j = 0; j < plainFourAndTwoEdgeFringe.length / 2; j++)
+          fringeTop.vertex(plainFourAndTwoEdgeFringe[j][0], plainFourAndTwoEdgeFringe[j][1], plainFourAndTwoEdgeFringe[j][2]);
+        fringeTop.endShape();
+        fringeBottom.beginShape();
+        fringeBottom.stroke(255, 165, 17);
+        for (int j = plainFourAndTwoEdgeFringe.length / 2; j < plainFourAndTwoEdgeFringe.length; j++)
+          fringeBottom.vertex(plainFourAndTwoEdgeFringe[j][0], plainFourAndTwoEdgeFringe[j][1], plainFourAndTwoEdgeFringe[j][2]);
+        fringeBottom.endShape();
       } else if (this.type == "stripes") {
-        // Stripes
-        // Bottom right
-        line(cubeRad, (cubeRad - weight), -cubeRad, cubeRad, cubeRad - weight, cubeRad - (cubeRad));
-        // Top right
-        line(cubeRad, -cubeRad + weight, -cubeRad, cubeRad, -cubeRad + weight, cubeRad - (cubeRad));
-        // Bottom left
-        line(-cubeRad, cubeRad - weight, cubeRad, cubeRad - (cubeRad), cubeRad - weight, cubeRad);
-        // Top left
-        line(-cubeRad, -cubeRad + weight, cubeRad, cubeRad - (cubeRad), -cubeRad + weight, cubeRad);
+        // Striped
+        leftFringe.beginShape(LINES);
+        leftFringe.stroke(255, 165, 17);
+        for (int j = 0; j < 2; j++)
+          leftFringe.vertex(stripedFourAndTwoEdgeFringe[j][0], stripedFourAndTwoEdgeFringe[j][1], stripedFourAndTwoEdgeFringe[j][2]);
+        for (int j = 2; j < 4; j++)
+          leftFringe.vertex(stripedFourAndTwoEdgeFringe[j][0], stripedFourAndTwoEdgeFringe[j][1], stripedFourAndTwoEdgeFringe[j][2]);
+        leftFringe.endShape();
+        rightFringe.beginShape(LINES);
+        rightFringe.stroke(255, 165, 17);
+        for (int j = 4; j < 6; j++)
+          rightFringe.vertex(stripedFourAndTwoEdgeFringe[j][0], stripedFourAndTwoEdgeFringe[j][1], stripedFourAndTwoEdgeFringe[j][2]);
+        for (int j = 6; j < 8; j++)
+          rightFringe.vertex(stripedFourAndTwoEdgeFringe[j][0], stripedFourAndTwoEdgeFringe[j][1], stripedFourAndTwoEdgeFringe[j][2]);
+        rightFringe.endShape();
       } else if (this.type == "overhang") {
         // Overhang
         // Bottom chevron (R -> L)
@@ -200,40 +216,61 @@ class CubeWCI {
       } // if
     } else if (this.sides == 2) {
       // Border
-      stroke(191, 85, 255);
-      line(cubeRad, cubeRad, cubeRad, -cubeRad, cubeRad, cubeRad);
-      line(cubeRad, -cubeRad, -cubeRad, cubeRad, -cubeRad, cubeRad);
+      borderTop.beginShape(LINES);
+      borderTop.stroke(191, 85, 255);
+      for (int i = 1; i < edges.length / 2; i++)
+        borderTop.vertex(edges[i][0], edges[i][1], edges[i][2]);
+      borderTop.endShape();
+      borderBottom.beginShape(LINES);
+      borderBottom.stroke(191, 85, 255);
+      for (int i = 4; i < edges.length; i++)
+        borderBottom.vertex(edges[i][0], edges[i][1], edges[i][2]);
+      borderBottom.endShape();
       // Fringe
-      stroke(255, 165, 17);
       if (this.type == "plain") {
-        // Top right
-        line(cubeRad, -cubeRad + weight, -cubeRad, cubeRad, -cubeRad + weight, cubeRad);
-        // Bottom left
-        line(-cubeRad, cubeRad - weight, cubeRad, cubeRad, cubeRad - weight, cubeRad);
-      } else if (this.type == "stripes") {
-        // Top right
-        line(cubeRad, -cubeRad + weight, -cubeRad, cubeRad, -cubeRad + weight, cubeRad - (cubeRad));
-        // Bottom left
-        line(-cubeRad, cubeRad - weight, cubeRad, cubeRad - (cubeRad), cubeRad - weight, cubeRad);
-      } else if (this.type == "overhang") {
-        // Top right
-        line(cubeRad, -cubeRad + weight, -cubeRad - (cubeRad), cubeRad, -cubeRad + weight, cubeRad);
-        // Bottom left
-        line(-cubeRad - (cubeRad), cubeRad - weight, cubeRad, cubeRad, cubeRad - weight, cubeRad);
-      } else if (this.type == "top") {
-        // Top right
-        line(cubeRad, -cubeRad + weight, -cubeRad, cubeRad, -cubeRad + weight, cubeRad);
+        fringeTop.beginShape(LINES);
+        fringeTop.stroke(255, 165, 17);
+        for (int i = 1; i < plainFourAndTwoEdgeFringe.length / 2; i++)
+          fringeTop.vertex(plainFourAndTwoEdgeFringe[i][0], plainFourAndTwoEdgeFringe[i][1], plainFourAndTwoEdgeFringe[i][2]);
+        fringeTop.endShape();
+        fringeBottom.beginShape(LINES);
+        fringeBottom.stroke(255, 165, 17);
+        for (int i = 4; i < plainFourAndTwoEdgeFringe.length; i++)
+          fringeBottom.vertex(plainFourAndTwoEdgeFringe[i][0], plainFourAndTwoEdgeFringe[i][1], plainFourAndTwoEdgeFringe[i][2]);
+        fringeBottom.endShape();
       } // if
+    }
+    if (this.sides == 6) {
+      if (this.rotate == "rotate") this.rotateR();
+      pushMatrix();
+      shape(border);
+      if (type == "plain") {
+        shape(fringe);
+      } else if (type == "stripes") {
+        shape(leftFringe);
+        shape(rightFringe);
+      } // if
+      popMatrix();
+    } else {
+      if (this.rotate == "rotate") this.rotateR();
+      pushMatrix();
+      shape(borderTop);
+      shape(borderBottom);
+      if (type == "plain") {
+        shape(fringeTop);
+        shape(fringeBottom);
+      } else if (type == "stripes") {
+        shape(leftFringe);
+        shape(rightFringe);
+      } // if
+      popMatrix();
     } // if
-    if (p != null) shape(p);
-    if (q != null) shape(q);
-    popMatrix();
   } // display
 
   // Rotates CubeWCI objects 46 degrees back and forth
   // on the xy-plane between -22 and -68 degrees, starting
   // to the right
-  void rotate() {
+  void rotateR() {
     rotateY(rotAngle);
     if (abs(rotAngle) >= 0.4) {
       rotDir = -rotDir;
@@ -243,6 +280,21 @@ class CubeWCI {
     } else if (rotDir == -1) {
       rotAngle -= 0.017;
     } // if
-  } // rotate
+  } // rotateR
 
+  // Rotates CubeWCI objects 46 degrees back and forth
+  // on the xy-plane between -22 and -68 degrees, starting
+  // to the right
+  void rotateL() {
+    rotateY(rotAngle);
+    if (abs(rotAngle) >= 0.4) {
+      rotDir = -rotDir;
+    } // if
+    if (rotDir == 1) {
+      rotAngle -= 0.017;
+    } else if (rotDir == -1) {
+      rotAngle += 0.017;
+    } // if
+  } // rotateL
+  
 } // CubeWCI

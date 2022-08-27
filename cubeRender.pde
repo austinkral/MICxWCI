@@ -13,8 +13,8 @@ void setup() {
   strokeCap(ROUND);
   noFill();
   ortho();
-  Cube1 = new Cube(width * 0.3, height * 0.5, -250, cubeRad, 4, "rotate");
-  CubeWCI1 = new CubeWCI(width * 0.7, height * 0.5, -250, cubeRad, 4, "rotate", "plain");
+  Cube1 = new Cube(width * 0.3, height * 0.5, -250, cubeRad, 6, "rotate");
+  CubeWCI1 = new CubeWCI(width * 0.7, height * 0.5, -250, cubeRad, 6, "rotate", "plain");
   // Cube2 = new Cube(width * 0.3, height * 0.50, -250, 150, 6, true);
   // CubeWCI2 = new CubeWCI(width * 0.7, height * 0.50, -250, 150, 6, true, "plain");
 } // setup
