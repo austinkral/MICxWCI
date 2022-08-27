@@ -1,12 +1,9 @@
-import java.util.Arrays;
-
 class CubeWCI {
   float xPos, yPos, zPos, rotAngle;
   int cubeRad, weight, sides, rotDir;
   String rotate, type;
   float[][] border;
   float[][] fringe;
-  ArrayList<PShape> shapes = new ArrayList<>();
 
   // CubeWCI constructor
   CubeWCI(float x, float y, float z, int r, int s, String rot, String t) {
@@ -47,7 +44,7 @@ class CubeWCI {
     rotateY(radians(-45)); // cube
     PShape p = createShape();
     PShape q = createShape();
-    if (rotate == "rotate") this.rotateR();
+    if (rotate == "rotate") this.rotate();
     if (this.sides == 6) {
       // Border
       p.beginShape();
@@ -62,7 +59,7 @@ class CubeWCI {
         q.beginShape();
         q.stroke(255, 165, 17);
           for (int j = 0; j < fringe.length; j++) {
-            q.vertex(border[j][0], border[j][1], border[j][2]);
+            q.vertex(fringe[j][0], fringe[j][1], fringe[j][2]);
           } // for
         q.endShape(CLOSE);
       } else if (this.type == "stripes") {
@@ -105,17 +102,18 @@ class CubeWCI {
       } // if
     } else if (this.sides == 4) {
       // Border
-      stroke(191, 85, 255);
-      beginShape();
-      vertex(cubeRad, cubeRad, -cubeRad);
-      vertex(cubeRad, cubeRad, cubeRad);
-      vertex(-cubeRad, cubeRad, cubeRad);
-      endShape();
-      beginShape();
-      vertex(cubeRad, -cubeRad, -cubeRad);
-      vertex(cubeRad, -cubeRad, cubeRad);
-      vertex(-cubeRad, -cubeRad, cubeRad);
-      endShape();
+      p.beginShape();
+      p.stroke(191, 85, 255);
+      for (int i = 0; i < border.length / 2; i++) {
+        p.vertex(border[i][0], border[i][1], border[i][2]);
+      } // for
+      p.endShape();
+      q.beginShape();
+      q.stroke(191, 85, 255);
+      for (int i = 3; i < border.length; i++) {
+        q.vertex(border[i][0], border[i][1], border[i][2]);
+      }
+      q.endShape();
       // Fringe
       stroke(255, 165, 17);
       if (this.type == "plain") {
@@ -227,13 +225,15 @@ class CubeWCI {
         line(cubeRad, -cubeRad + weight, -cubeRad, cubeRad, -cubeRad + weight, cubeRad);
       } // if
     } // if
+    if (p != null) shape(p);
+    if (q != null) shape(q);
     popMatrix();
   } // display
 
   // Rotates CubeWCI objects 46 degrees back and forth
   // on the xy-plane between -22 and -68 degrees, starting
   // to the right
-  void rotateR() {
+  void rotate() {
     rotateY(rotAngle);
     if (abs(rotAngle) >= 0.4) {
       rotDir = -rotDir;
@@ -245,18 +245,4 @@ class CubeWCI {
     } // if
   } // rotate
 
-  // Rotates CubeWCI objects 46 degrees back and forth
-  // on the xy-plane between -22 and -68 degrees, starting
-  // to the left
-  void rotateL() {
-    rotateY(rotAngle);
-    if (abs(rotAngle) >= 0.4) {
-      rotDir = -rotDir;
-    } // if
-    if (rotDir == 1) {
-      rotAngle -= 0.017;
-    } else if (rotDir == -1) {
-      rotAngle += 0.017;
-    } // if
-  } // rotate
 } // CubeWCI

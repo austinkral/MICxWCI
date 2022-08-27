@@ -2,6 +2,7 @@ class Cube {
   float xPos, yPos, zPos, rotAngle;
   int cubeRad, sides, weight, rotDir;
   String rotate;
+  float[][] border;
   
   // Cube constructor
   Cube(float x, float y, float z, int r, int s, String rot) {
@@ -14,6 +15,14 @@ class Cube {
     rotAngle = 0;
     rotDir = 1;
     weight = cubeRad / 12;
+    border = new float[][] {
+      {-cubeRad, -cubeRad, cubeRad}, // top left vertex
+      {cubeRad, -cubeRad, cubeRad}, // top front vertex
+      {cubeRad, -cubeRad, -cubeRad}, // top right vertex
+      {cubeRad, cubeRad, -cubeRad}, // bottom right vertex
+      {cubeRad, cubeRad, cubeRad}, // bottom front vertex
+      {-cubeRad, cubeRad, cubeRad}, // bottom left vertex
+    };
   } // Cube
   
   // Draw Cube object to screen
@@ -24,35 +33,37 @@ class Cube {
     stroke(191, 85, 255);
     rotateX(radians(-25)); // re-align
     rotateY(radians(-45)); // cube
+    PShape p = createShape();
+    PShape q = createShape();
     if (rotate == "rotate") this.rotate();
-    else if (rotate == "twist");
     if (this.sides == 6) {
-      beginShape();
-      vertex(cubeRad, cubeRad, -cubeRad);
-      vertex(cubeRad, cubeRad, cubeRad);
-      vertex(-cubeRad, cubeRad, cubeRad);
-      vertex(-cubeRad, -cubeRad, cubeRad);
-      vertex(cubeRad, -cubeRad, cubeRad);
-      vertex(cubeRad, -cubeRad, -cubeRad);
-      vertex(cubeRad, cubeRad, -cubeRad);
-      vertex(cubeRad, cubeRad, cubeRad);
-      endShape();
+      p.beginShape();
+      p.stroke(191, 85, 255);
+      for (int i = 0; i < border.length; i++) {
+        p.vertex(border[i][0], border[i][1], border[i][2]);
+      } // for
+      p.endShape(CLOSE);
     } else if (this.sides == 4) {
-      beginShape();
-      vertex(cubeRad, cubeRad, -cubeRad);
-      vertex(cubeRad, cubeRad, cubeRad);
-      vertex(-cubeRad, cubeRad, cubeRad);
-      endShape();
-      beginShape();
-      vertex(cubeRad, -cubeRad, -cubeRad);
-      vertex(cubeRad, -cubeRad, cubeRad);
-      vertex(-cubeRad, -cubeRad, cubeRad);
-      endShape();
+      p.beginShape();
+      p.stroke(191, 85, 255);
+      for (int i = 0; i < border.length / 2; i++) {
+        p.vertex(border[i][0], border[i][1], border[i][2]);
+      } // for
+      p.endShape();
+      q.beginShape();
+      q.stroke(191, 85, 255);
+      for (int i = 3; i < border.length; i++) {
+        q.vertex(border[i][0], border[i][1], border[i][2]);
+      } // for
+      q.endShape();
     } else if (this.sides == 2) {
-      stroke(191, 85, 255);
+      beginShape();
       line(cubeRad, cubeRad, cubeRad, -cubeRad, cubeRad, cubeRad);
       line(cubeRad, -cubeRad, -cubeRad, cubeRad, -cubeRad, cubeRad);
+      endShape();
     } // if
+    if (p != null) shape(p);
+    if (q != null) shape(q);
     popMatrix();
   } // display
   
