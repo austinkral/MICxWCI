@@ -1,10 +1,10 @@
 class Cube {
   float xPos, yPos, zPos, rotAngle;
   int cubeRad, sides, weight, rotDir;
-  boolean rotate;
+  String rotate;
   
   // Cube constructor
-  Cube(float x, float y, float z, int r, int s, boolean rot) {
+  Cube(float x, float y, float z, int r, int s, String rot) {
     xPos = x;
     yPos = y;
     zPos = z;
@@ -24,7 +24,8 @@ class Cube {
     stroke(191, 85, 255);
     rotateX(radians(-25)); // re-align
     rotateY(radians(-45)); // cube
-    if (rotate) this.rotate();
+    if (rotate == "rotate") this.rotate();
+    else if (rotate == "twist");
     if (this.sides == 6) {
       beginShape();
       vertex(cubeRad, cubeRad, -cubeRad);

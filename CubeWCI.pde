@@ -1,11 +1,15 @@
+import java.util.Arrays;
+
 class CubeWCI {
   float xPos, yPos, zPos, rotAngle;
-  int cubeRad, sides, weight, rotDir;
-  boolean rotate;
-  String type;
+  int cubeRad, weight, sides, rotDir;
+  String rotate, type;
+  float[][] border;
+  float[][] fringe;
+  ArrayList<PShape> shapes = new ArrayList<>();
 
   // CubeWCI constructor
-  CubeWCI(float x, float y, float z, int r, int s, boolean rot, String t) {
+  CubeWCI(float x, float y, float z, int r, int s, String rot, String t) {
     xPos = x;
     yPos = y;
     zPos = z;
@@ -16,6 +20,22 @@ class CubeWCI {
     rotAngle = 0;
     rotDir = 1;
     weight = cubeRad / 12;
+    border = new float[][] {
+      {-cubeRad, -cubeRad, cubeRad}, // top left vertex
+      {cubeRad, -cubeRad, cubeRad}, // top front vertex
+      {cubeRad, -cubeRad, -cubeRad}, // top right vertex
+      {cubeRad, cubeRad, -cubeRad}, // bottom right vertex
+      {cubeRad, cubeRad, cubeRad}, // bottom front vertex
+      {-cubeRad, cubeRad, cubeRad}, // bottom left vertex
+    };
+    fringe = new float[][] {
+      {-cubeRad + weight * 0.9, -cubeRad + weight, cubeRad}, // top left vertex
+      {cubeRad, -cubeRad + weight, cubeRad}, // top front vertex
+      {cubeRad, -cubeRad + weight, -cubeRad + weight * 0.9}, // top right vertex
+      {cubeRad, cubeRad - weight, -cubeRad  + weight * 0.9}, // bottom right vertex
+      {cubeRad, cubeRad  - weight, cubeRad}, // bottom front vertex
+      {-cubeRad + weight * 0.9, cubeRad  - weight, cubeRad} // bottom left vertex
+    };
   } // CubeWCI
 
   // Draw CubeWCI object to screen
@@ -25,32 +45,26 @@ class CubeWCI {
     strokeWeight(weight);
     rotateX(radians(-25)); // re-align
     rotateY(radians(-45)); // cube
-    if (rotate) this.rotate();
+    PShape p = createShape();
+    PShape q = createShape();
+    if (rotate == "rotate") this.rotateR();
     if (this.sides == 6) {
-      stroke(191, 85, 255);
-      beginShape();
-      vertex(cubeRad, cubeRad, -cubeRad);
-      vertex(cubeRad, cubeRad, cubeRad);
-      vertex(-cubeRad, cubeRad, cubeRad);
-      vertex(-cubeRad, -cubeRad, cubeRad);
-      vertex(cubeRad, -cubeRad, cubeRad);
-      vertex(cubeRad, -cubeRad, -cubeRad);
-      vertex(cubeRad, cubeRad, -cubeRad);
-      vertex(cubeRad, cubeRad, cubeRad);
-      endShape();
-      stroke(255, 165, 17);
+      // Border
+      p.beginShape();
+      p.stroke(191, 85, 255);
+      for (int i = 0; i < border.length; i++) {
+        p.vertex(border[i][0], border[i][1], border[i][2]);
+      } // for
+      p.endShape(CLOSE);
+      // Fringe
       if (this.type == "plain") {
         // Plain
-        beginShape();
-        vertex(cubeRad, cubeRad  - weight, -cubeRad + weight * 0.9);
-        vertex(cubeRad, cubeRad  - weight, cubeRad);
-        vertex(-cubeRad + weight * 0.9, cubeRad  - weight, cubeRad);
-        vertex(-cubeRad + weight * 0.9, -cubeRad + weight, cubeRad);
-        vertex(cubeRad, -cubeRad + weight, cubeRad);
-        vertex(cubeRad, -cubeRad + weight, -cubeRad + weight * 0.9);
-        vertex(cubeRad, cubeRad - weight, -cubeRad  + weight * 0.9);
-        vertex(cubeRad, cubeRad  - weight, cubeRad);
-        endShape();
+        q.beginShape();
+        q.stroke(255, 165, 17);
+          for (int j = 0; j < fringe.length; j++) {
+            q.vertex(border[j][0], border[j][1], border[j][2]);
+          } // for
+        q.endShape(CLOSE);
       } else if (this.type == "stripes") {
         // Stripes
         // Right
@@ -90,6 +104,7 @@ class CubeWCI {
         endShape();
       } // if
     } else if (this.sides == 4) {
+      // Border
       stroke(191, 85, 255);
       beginShape();
       vertex(cubeRad, cubeRad, -cubeRad);
@@ -101,6 +116,7 @@ class CubeWCI {
       vertex(cubeRad, -cubeRad, cubeRad);
       vertex(-cubeRad, -cubeRad, cubeRad);
       endShape();
+      // Fringe
       stroke(255, 165, 17);
       if (this.type == "plain") {
         // Plain
@@ -140,6 +156,42 @@ class CubeWCI {
         vertex(cubeRad, -cubeRad + weight, cubeRad);
         vertex(-cubeRad - cubeRad, -cubeRad + weight, cubeRad);
         endShape();
+      } else if (this.type == "overhangGap") {
+        // Overhang with gap
+        // Bottom chevron (R -> L)
+        beginShape();
+        vertex(cubeRad, (cubeRad - weight), -cubeRad);
+        vertex(cubeRad, cubeRad - weight, cubeRad);
+        vertex(-cubeRad, cubeRad - weight, cubeRad);
+        endShape();
+        line(cubeRad, (cubeRad - weight), -cubeRad - (0.5 * cubeRad), cubeRad, (cubeRad - weight), -cubeRad - cubeRad);
+        line(-cubeRad - (0.5 * cubeRad), cubeRad - weight, cubeRad, -cubeRad - cubeRad, cubeRad - weight, cubeRad);
+        // Top chevron (L -> R)
+        beginShape();
+        vertex(cubeRad, -cubeRad + weight, -cubeRad);
+        vertex(cubeRad, -cubeRad + weight, cubeRad);
+        vertex(-cubeRad, -cubeRad + weight, cubeRad);
+        endShape();
+        line(cubeRad, -cubeRad + weight, -cubeRad - (0.5 * cubeRad), cubeRad, -cubeRad + weight, -cubeRad - cubeRad);
+        line(-cubeRad - (0.5 * cubeRad), -cubeRad + weight, cubeRad, -cubeRad - cubeRad, -cubeRad + weight, cubeRad);
+      } else if (this.type == "floatingFringe") {
+        // Floating fringe
+        // Bottom chevron (R -> L)
+        beginShape();
+        vertex(cubeRad, (cubeRad - weight), -cubeRad - (0.5 * cubeRad));
+        vertex(cubeRad, cubeRad - weight, cubeRad);
+        vertex(-cubeRad - (0.5 * cubeRad), cubeRad - weight, cubeRad);
+        endShape();
+        line(cubeRad, (cubeRad - weight), -cubeRad - cubeRad, cubeRad, (cubeRad - weight), -cubeRad - (1.5 * cubeRad));
+        line(-cubeRad - cubeRad, cubeRad - weight, cubeRad, -cubeRad - (1.5 * cubeRad), cubeRad - weight, cubeRad);
+        // Top chevron (L -> R)
+        beginShape();
+        vertex(cubeRad, -cubeRad + weight, -cubeRad - (0.5 * cubeRad));
+        vertex(cubeRad, -cubeRad + weight, cubeRad);
+        vertex(-cubeRad - (0.5 * cubeRad), -cubeRad + weight, cubeRad);
+        endShape();
+        line(cubeRad, -cubeRad + weight, -cubeRad - cubeRad, cubeRad, -cubeRad + weight, -cubeRad - (1.5 * cubeRad));
+        line(-cubeRad - cubeRad, -cubeRad + weight, cubeRad, -cubeRad - (1.5 * cubeRad), -cubeRad + weight, cubeRad);
       } else if (this.type == "top") {
         // Top
         beginShape();
@@ -149,9 +201,11 @@ class CubeWCI {
         endShape();
       } // if
     } else if (this.sides == 2) {
+      // Border
       stroke(191, 85, 255);
       line(cubeRad, cubeRad, cubeRad, -cubeRad, cubeRad, cubeRad);
       line(cubeRad, -cubeRad, -cubeRad, cubeRad, -cubeRad, cubeRad);
+      // Fringe
       stroke(255, 165, 17);
       if (this.type == "plain") {
         // Top right
@@ -177,8 +231,9 @@ class CubeWCI {
   } // display
 
   // Rotates CubeWCI objects 46 degrees back and forth
-  // on the xy-plane between -22 and -68 degrees
-  void rotate() {
+  // on the xy-plane between -22 and -68 degrees, starting
+  // to the right
+  void rotateR() {
     rotateY(rotAngle);
     if (abs(rotAngle) >= 0.4) {
       rotDir = -rotDir;
@@ -187,6 +242,21 @@ class CubeWCI {
       rotAngle += 0.017;
     } else if (rotDir == -1) {
       rotAngle -= 0.017;
+    } // if
+  } // rotate
+
+  // Rotates CubeWCI objects 46 degrees back and forth
+  // on the xy-plane between -22 and -68 degrees, starting
+  // to the left
+  void rotateL() {
+    rotateY(rotAngle);
+    if (abs(rotAngle) >= 0.4) {
+      rotDir = -rotDir;
+    } // if
+    if (rotDir == 1) {
+      rotAngle -= 0.017;
+    } else if (rotDir == -1) {
+      rotAngle += 0.017;
     } // if
   } // rotate
 } // CubeWCI
