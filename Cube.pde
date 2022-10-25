@@ -2,11 +2,12 @@ class Cube {
   float xPos, yPos, zPos, rotAngle;
   int cubeRad, sides, weight, rotDir;
   String rotate;
+  // int purple = #000000, orange = #000000;
   int purple = #A550E2, orange = #FFCF25;
   float[][] border;
   
   // Cube constructor
-  Cube(float x, float y, float z, int r, int s, String rot) {
+  Cube(float x, float y, float z, int r, int w, int s, String rot) {
     xPos = x;
     yPos = y;
     zPos = z;
@@ -15,7 +16,7 @@ class Cube {
     rotate = rot;
     rotAngle = 0;
     rotDir = 1;
-    weight = cubeRad / 12;
+    weight = w;
     border = new float[][] {
       {-cubeRad, -cubeRad, cubeRad}, // top left vertex
       {cubeRad, -cubeRad, cubeRad}, // top front vertex
@@ -79,9 +80,9 @@ class Cube {
       rotDir = -rotDir; 
     } // if
     if (rotDir == 1) {
-      rotAngle += 0.017;
+      rotAngle += 0.015;
     } else if (rotDir == -1) {
-      rotAngle -= 0.017;
+      rotAngle -= 0.015;
     } // if
   } // rotate
   

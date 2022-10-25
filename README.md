@@ -7,7 +7,7 @@ The watercolor illusion (WCI) causes a non-colored area enclosed by a contrastin
 
 The motion-induced illusory contour arises from the horizontal rotation of a partially outlined wireframe cube in space, with the frontmost vertical edge removed. This phenomenon was first observed by Weisstein and Klymenko in their paper “The motion-induced contour” (1981).
 
-<img src="/images/MIC.png" alt="Motion-induced illusory contour example" style="height: auto; width: 50%;"/>
+<img src="/images/MIC.gif" alt="Motion-induced illusory contour example" style="height: auto; width: 50%;"/>
 
 ## Methods
 For the present study, motion-induced illusory contour animations were created using <a href="https://processing.org/" target="_blank">Processing 5</a>, an OpenGL-compatible graphics package for the Java programming language. The partial wireframe cubes were rendered in purple and displayed on a white background. An inset orange fringe was added to test whether the WCI would still be induced in moving stimuli. The partial cubes are then rotated back and forth within a forty-six-degree range across the XY-plane. Each test case will be displayed to research subjects for a fixed duration, all of whom will be vision tested to verify they have normal or corrected-to-normal vision and normal color vision. Subjects will then be asked to indicate whether or not the stimulus appeared tinged to them and, if so, rate the intensity of the perceived color on a 7-point scale. In trials where color spreading is present, they will also be asked to indicate what the boundaries of the tinged region were.
@@ -15,7 +15,7 @@ For the present study, motion-induced illusory contour animations were created u
 ## Expected Results
 
 <figure>
-	<img src="/images/renderPlain.gif" alt="Figure 1: MIC vs. MIC + WCI" style="height: auto; width: 100%;"/>
+	<img src="/images/plain.gif" alt="Figure 1: MIC vs. MIC + WCI" style="height: auto; width: 100%;"/>
 	<figcaption><p align="center"><em>Figure 1: MIC vs. MIC + WCI</em></p><br/></figcaption>
 </figure>
 
@@ -23,7 +23,7 @@ For the present study, motion-induced illusory contour animations were created u
 The combination of the motion-induced illusory contour with the watercolor illusion demonstrates for the first time that the color spreading induced by the WCI can be replicated in moving stimuli, thus proving that it is spatiotemporally dynamic (Figure 1). Furthermore, the striped test case (depicted below) demonstrates two kinds of illusory edges, the first formed at the frontmost “corner” and induced by motion, and the second formed by the premature termination of the orange fringe (Figure 2). The latter result is consistent with static results obtained by Hale and Brown (2021), further supporting the conclusion that the WCI is spatiotemporally dynamic.
 
 <figure>
-	<img src="/images/renderStripes.gif" alt="Figure 2: MIC + WCI stripes" style="height: auto; width: 100%;"/>
+	<img src="/images/stripes.gif" alt="Figure 2: MIC + WCI stripes" style="height: auto; width: 100%;"/>
 	<figcaption><p align="center"><em>Figure 2: MIC + partial WCI</em></p><br/></figcaption>
 </figure>
 
@@ -31,7 +31,7 @@ The combination of the motion-induced illusory contour with the watercolor illus
 More unexpectedly, color spreading persists when the orange fringe is extended beyond the bounds of the purple edges. Typically, color spreading as a result of the WCI is limited to areas immediately bounded by a contrasting border and fringe, suggesting that color filling-in should not be observed past the termination of the purple border. One possible explanation for the phenomenology referenced above is offered by Grossberg’s FACADE model of figure-ground perception (Grossberg 1994), which postulates a boundary contour system (BCS), a motion boundary contour system (MBCS), and a feature contour system (FCS) that all work in tandem to produce coherent perceptions of 3-D objects. In the example below, it is possible that interactions between the MBCS and FCS cause the perception of a continuous surface extending beyond the purple edges, thus providing another mechanism (beyond the WCI) by which color spreading may occur.
 
 <figure>
-	<img src="/images/renderOverhang.gif" alt="Figure 3: MIC + WCI overhang" style="height: auto; width: 100%;"/>
+	<img src="/images/overhang.gif" alt="Figure 3: MIC + WCI overhang" style="height: auto; width: 100%;"/>
 	<figcaption><p align="center"><em>Figure 3: MIC + overhanging WCI</em></p><br/></figcaption>
 </figure>
 

@@ -2,15 +2,16 @@ class CubeWCI {
   float xPos, yPos, zPos, rotAngle;
   int cubeRad, weight, sides, rotDir;
   String rotate, type;
+  // int purple = #000000, orange = #000000;
   int purple = #A550E2, orange = #FFCF25;
   float[][] edges;
   float[][] plainSixEdgeFringe;
   float[][] plainFourAndTwoEdgeFringe;
   float[][] stripedSixEdgeFringe;
-  float[][] stripedFourAndTwoEdgeFringe;
+  float[][] stripedFourAndTwoEdgeFringe;\
 
   // CubeWCI constructor
-  CubeWCI(float x, float y, float z, int r, int s, String rot, String t) {
+  CubeWCI(float x, float y, float z, int r, int w, int s, String rot, String t) {
     xPos = x;
     yPos = y;
     zPos = z;
@@ -20,7 +21,7 @@ class CubeWCI {
     type = t;
     rotAngle = 0;
     rotDir = 1;
-    weight = cubeRad / 12;
+    weight = w;
     edges = new float[][] {
       {-cubeRad, -cubeRad, cubeRad}, // top left vertex
       {cubeRad, -cubeRad, cubeRad}, // top front vertex
@@ -179,6 +180,25 @@ class CubeWCI {
         // Bottom chevron (R -> L)
         stroke(orange);
         beginShape();
+        vertex(cubeRad, (cubeRad - weight), -cubeRad - (0.5 * cubeRad));
+        vertex(cubeRad, cubeRad - weight, cubeRad);
+        vertex(-cubeRad - (0.5 * cubeRad), cubeRad - weight, cubeRad);
+        endShape();
+        line(cubeRad, (cubeRad - weight), -cubeRad - cubeRad, cubeRad, (cubeRad - weight), -cubeRad - (1.5 * cubeRad));
+        line(-cubeRad - cubeRad, cubeRad - weight, cubeRad, -cubeRad - (1.5 * cubeRad), cubeRad - weight, cubeRad);
+        // Top chevron (L -> R)
+        beginShape();
+        vertex(cubeRad, -cubeRad + weight, -cubeRad - (0.5 * cubeRad));
+        vertex(cubeRad, -cubeRad + weight, cubeRad);
+        vertex(-cubeRad - (0.5 * cubeRad), -cubeRad + weight, cubeRad);
+        endShape();
+        line(cubeRad, -cubeRad + weight, -cubeRad - cubeRad, cubeRad, -cubeRad + weight, -cubeRad - (1.5 * cubeRad));
+        line(-cubeRad - cubeRad, -cubeRad + weight, cubeRad, -cubeRad - (1.5 * cubeRad), -cubeRad + weight, cubeRad);
+      } else if (this.type == "floatingFringe") {
+        // Floating fringe
+        // Bottom chevron (R -> L)
+        stroke(orange);
+        beginShape();
         vertex(cubeRad, (cubeRad - weight), -cubeRad);
         vertex(cubeRad, cubeRad - weight, cubeRad);
         vertex(-cubeRad, cubeRad - weight, cubeRad);
@@ -194,25 +214,6 @@ class CubeWCI {
         endShape();
         line(cubeRad, -cubeRad + weight, -cubeRad - (0.5 * cubeRad), cubeRad, -cubeRad + weight, -cubeRad - cubeRad);
         line(-cubeRad - (0.5 * cubeRad), -cubeRad + weight, cubeRad, -cubeRad - cubeRad, -cubeRad + weight, cubeRad);
-      } else if (this.type == "floatingFringe") {
-        // Floating fringe
-        // Bottom chevron (R -> L)
-        stroke(orange);
-        beginShape();
-        vertex(cubeRad, (cubeRad - weight), -cubeRad - (0.5 * cubeRad));
-        vertex(cubeRad, cubeRad - weight, cubeRad);
-        vertex(-cubeRad - (0.5 * cubeRad), cubeRad - weight, cubeRad);
-        endShape();
-        line(cubeRad, (cubeRad - weight), -cubeRad - cubeRad, cubeRad, (cubeRad - weight), -cubeRad - (1.5 * cubeRad));
-        line(-cubeRad - cubeRad, cubeRad - weight, cubeRad, -cubeRad - (1.5 * cubeRad), cubeRad - weight, cubeRad);
-        // Top chevron (L -> R)
-        beginShape();
-        vertex(cubeRad, -cubeRad + weight, -cubeRad - (0.5 * cubeRad));
-        vertex(cubeRad, -cubeRad + weight, cubeRad);
-        vertex(-cubeRad - (0.5 * cubeRad), -cubeRad + weight, cubeRad);
-        endShape();
-        line(cubeRad, -cubeRad + weight, -cubeRad - cubeRad, cubeRad, -cubeRad + weight, -cubeRad - (1.5 * cubeRad));
-        line(-cubeRad - cubeRad, -cubeRad + weight, cubeRad, -cubeRad - (1.5 * cubeRad), -cubeRad + weight, cubeRad);
       } else if (this.type == "top") {
         // Top
         stroke(orange);
@@ -281,9 +282,9 @@ class CubeWCI {
       rotDir = -rotDir;
     } // if
     if (rotDir == 1) {
-      rotAngle += 0.017;
+      rotAngle += 0.015;
     } else if (rotDir == -1) {
-      rotAngle -= 0.017;
+      rotAngle -= 0.015;
     } // if
   } // rotate
   

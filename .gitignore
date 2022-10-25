@@ -1,11 +1,9 @@
-# Ignore render directories
-render*/
 # Ignore GIFs
 *.gif
-# Except for...
-!images/*.gif
-# Ignore scale directory
+# Ignore scale + cards directories
 scale/
+cards/
+originals/
 # Ignore miscellaneous
 .DS_Store
 ffmpeg.txt
