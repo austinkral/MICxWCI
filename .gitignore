@@ -3,7 +3,6 @@
 # Ignore scale + cards directories
 cards/
 centered/
-images/
 originals/
 rated/
 scale/
