@@ -6,12 +6,6 @@ centered/
 originals/
 rated/
 scale/
-# Except for...
-!images/WCI.png
-!images/MIC.gif
-!images/plain.gif
-!images/overhang.gif
-!images/stripes/gif
 # Ignore miscellaneous
 .DS_Store
 ffmpeg.txt
