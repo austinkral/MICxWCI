@@ -72,39 +72,39 @@ units='pix', pos=[0,0])
 shadingExample = visual.ImageStim(win, image='images/shadingExample.png',
 units='pix', pos=[0,0])
 
-# Create ratings gif list
-gif1= visual.MovieStim3(win, filename='animations/plain4.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif2= visual.MovieStim3(win, filename='animations/plain6.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif3= visual.MovieStim3(win, filename='animations/stripes4.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif4= visual.MovieStim3(win, filename='animations/stripes6.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif5= visual.MovieStim3(win, filename='animations/floatingFringe4.gif',  
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif6= visual.MovieStim3(win, filename='animations/overhang4.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif7= visual.MovieStim3(win, filename='animations/overhangGap4.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gifListRatings = [gif1, gif2, gif3, gif4, gif5, gif6, gif7]
+# Create ratings static list
+img1= visual.ImageStim(win, filename='static/plain4.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img2= visual.ImageStim(win, filename='static/plain6.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img3= visual.ImageStim(win, filename='static/stripes4.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img4= visual.ImageStim(win, filename='static/stripes6.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img5= visual.ImageStim(win, filename='static/floatingFringe4.gif',  
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img6= visual.ImageStim(win, filename='static/overhang4.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img7= visual.ImageStim(win, filename='static/overhangGap4.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+imgListRatings = [img1, img2, img3, img4, img5, img6, img7]
 
-# Create shadings gif list
-gif11= visual.MovieStim3(win, filename='animations/plain4v2.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif12= visual.MovieStim3(win, filename='animations/plain6v2.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif13= visual.MovieStim3(win, filename='animations/stripes4v2.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif14= visual.MovieStim3(win, filename='animations/stripes6v2.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif15= visual.MovieStim3(win, filename='animations/floatingFringe4v2.gif',  
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif16= visual.MovieStim3(win, filename='animations/overhang4v2.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gif17= visual.MovieStim3(win, filename='animations/overhangGap4v2.gif', 
-units='pix', size=[800,600], pos=[0, 0], loop=True, autoLog=False)
-gifListShadings = [gif11, gif12, gif13, gif14, gif15, gif16, gif17]
+# Create shadings static list
+img1= visual.ImageStim(win, filename='static/plain4v2.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img2= visual.ImageStim(win, filename='static/plain6v2.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img3= visual.ImageStim(win, filename='static/stripes4v2.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img4= visual.ImageStim(win, filename='static/stripes6v2.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img5= visual.ImageStim(win, filename='static/floatingFringe4v2.gif',  
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img6= visual.ImageStim(win, filename='static/overhang4v2.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+img7= visual.ImageStim(win, filename='static/overhangGap4v2.gif', 
+units='pix', size=[800,600], pos=[0, 0], autoLog=False)
+imgListShadings = [img11, img12, img13, img14, img15, img16, img17]
 
 # Randomize presentation order for each trial
 perm1 = np.random.permutation([0, 1, 2, 3, 4, 5, 6])
@@ -136,23 +136,16 @@ begin.draw()
 win.flip()
 event.waitKeys(keyList=['space'])
 kb.clearEvents()
-gifListRatings[2].stop()
-gifListRatings[2].reset()
 trial = 0
 for i in range(7):
-    gifListRatings[perm1[i]].loadMovie(gifListRatings[perm1[i]].filename)
-    while gifListRatings[perm1[i]].status != visual.FINISHED:
-        gifListRatings[perm1[i]].draw()
-        rating.draw()
-        scaleTxt.draw()
-        win.flip()
-        keys = kb.getKeys(['1','2','3','4','5','6','7'], waitRelease=True)
-        if any(elem in keys for elem in userInput):
-            response = int(keys[0].name)
-            gifListRatings[perm1[i]].stop()
-            gifListRatings[perm1[i]].reset()
-            break
-    trial = trial + 1
+    imgListRatings[perm1[i]].draw()
+    rating.draw()
+    scaleTxt.draw()
+    win.flip()
+    keys = kb.getKeys(['1','2','3','4','5','6','7'], waitRelease=True)
+    if any(elem in keys for elem in userInput):
+        response = int(keys[0].name)
+    trial = trial+1
     data.append(['1'])
     data[trial - 1].append(perm1[i])
     data[trial - 1].append(response)
@@ -166,18 +159,13 @@ for i in range(7):
     os.fsync(dataFile) # forces write of the file
 # Trial 2
 for i in range(7):
-    gifListRatings[perm2[i]].loadMovie(gifListRatings[perm2[i]].filename)
-    while gifListRatings[perm2[i]].status != visual.FINISHED:
-        gifListRatings[perm2[i]].draw()
-        rating.draw()
-        scaleTxt.draw()
-        win.flip()
-        keys = kb.getKeys(['1','2','3','4','5','6','7'], waitRelease=True)
-        if any(elem in keys for elem in userInput):
-            response = int(keys[0].name)
-            gifListRatings[perm2[i]].stop()
-            gifListRatings[perm2[i]].reset()
-            break
+    imgListRatings[perm2[i]].draw()
+    rating.draw()
+    scaleTxt.draw()
+    win.flip()
+    keys = kb.getKeys(['1','2','3','4','5','6','7'], waitRelease=True)
+    if any(elem in keys for elem in userInput):
+        response = int(keys[0].name)
     trial = trial + 1
     data.append(['2'])
     data[trial - 1].append(perm2[i])
@@ -193,18 +181,13 @@ for i in range(7):
     written = True
 # Trial 3
 for i in range(7):
-    gifListRatings[perm3[i]].loadMovie(gifListRatings[perm3[i]].filename)
-    while gifListRatings[perm3[i]].status != visual.FINISHED:
-        gifListRatings[perm3[i]].draw()
-        rating.draw()
-        scaleTxt.draw()
-        win.flip()
-        keys = kb.getKeys(['1','2','3','4','5','6','7'], waitRelease=True)
-        if any(elem in keys for elem in userInput):
-            response = int(keys[0].name)
-            gifListRatings[perm3[i]].stop()
-            gifListRatings[perm3[i]].reset()
-            break
+    imgListRatings[perm3[i]].draw()
+    rating.draw()
+    scaleTxt.draw()
+    win.flip()
+    keys = kb.getKeys(['1','2','3','4','5','6','7'], waitRelease=True)
+    if any(elem in keys for elem in userInput):
+        response = int(keys[0].name)
     trial = trial + 1
     data.append(['3'])
     data[trial - 1].append(perm3[i])
@@ -233,13 +216,9 @@ win.flip()
 event.waitKeys(keyList=['space'])
 kb.clearEvents()
 for i in range(7):
-    while gifListShadings[perm4[i]].status != visual.FINISHED:
-        gifListShadings[perm4[i]].draw()
-        win.flip()
-        keys = kb.getKeys(['space'], waitRelease=True)
-        if 'space' in keys:
-            gifListShadings[perm4[i]].stop()
-            break
+    imgListShadings[perm4[i]].draw()
+    win.flip()
+    event.waitKeys(keyList=['space']
 # End screen
 outro.draw()
 win.flip()
