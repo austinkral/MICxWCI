@@ -8,13 +8,14 @@ PImage img;
 // Initialize MIC and MIC + WCI stimuli
 void setup() {
   // Sized for lab monitor
-  size(800, 600, P3D);
+  // size(800, 600, P3D);
+  fullScreen(P3D);
   noFill();
   stroke(weight);
   strokeJoin(MITER);
   ortho();
-  Cube1 = new Cube(width * 0.3, height * 0.5, -250, cubeRad, weight, 6, "rotate");
-  CubeWCI1 = new CubeWCI(width * 0.7, height * 0.5, -250, cubeRad, weight, 4, "rotate", "overhangGap");
+  Cube1 = new Cube(width * 0.5, height * 0.32, -250, cubeRad, weight, 4, true);
+  CubeWCI1 = new CubeWCI(width * 0.5, height * 0.32, -250, cubeRad, weight, 4, true, "overhangLargeGap");
   img = loadImage("scale/scale.png");
 } // setup
 
@@ -23,9 +24,9 @@ void draw() {
   background(255);
   // imageMode(CENTER);
   // image(img, width / 2, height - 90, img.width, img.height);
-  // Cube1.display();
-  // CubeWCI1.display();
-  // saveFrame("images/MIC/###.png");
+  Cube1.display();
+  CubeWCI1.display();
+  // saveFrame("rated/floatingFringe4/###.png");
 } // draw
 
 // Exit display

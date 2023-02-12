@@ -1,13 +1,16 @@
 class Cube {
   float xPos, yPos, zPos, rotAngle;
   int cubeRad, sides, weight, rotDir;
-  String rotate;
-  // int purple = #000000, orange = #000000;
+  boolean rotate;
   int purple = #A550E2, orange = #FFCF25;
   float[][] border;
   
+  // Initialize cube edges
+  PShape top = createShape();
+  PShape bottom = createShape();
+  
   // Cube constructor
-  Cube(float x, float y, float z, int r, int w, int s, String rot) {
+  Cube(float x, float y, float z, int r, int w, int s, boolean rot) {
     xPos = x;
     yPos = y;
     zPos = z;
@@ -17,6 +20,8 @@ class Cube {
     rotAngle = 0;
     rotDir = 1;
     weight = w;
+    
+    // Define cube vertices
     border = new float[][] {
       {-cubeRad, -cubeRad, cubeRad}, // top left vertex
       {cubeRad, -cubeRad, cubeRad}, // top front vertex
@@ -33,42 +38,42 @@ class Cube {
     translate(xPos, yPos, zPos);
     strokeWeight(weight);
     stroke(purple);
-    rotateX(radians(-25)); // re-align
+    rotateX(radians(-20)); // re-align
     rotateY(radians(-45)); // cube
-    PShape p = createShape();
-    PShape q = createShape();
-    if (rotate == "rotate") this.rotate();
+    
+
+    if (this.rotate == true) this.rotate();
     if (this.sides == 6) {
-      p.beginShape();
+      top.beginShape();
       stroke(purple);
       for (int i = 0; i < border.length; i++)
-        p.vertex(border[i][0], border[i][1], border[i][2]);
-      p.endShape(CLOSE);
+        top.vertex(border[i][0], border[i][1], border[i][2]);
+      top.endShape(CLOSE);
     } else if (this.sides == 4) {
-      p.beginShape();
-      stroke(purple);
-      for (int i = 0; i < border.length / 2; i++)
-        p.vertex(border[i][0], border[i][1], border[i][2]);
-      p.endShape();
-      q.beginShape();
+        top.beginShape();
+        stroke(purple);
+        for (int i = 0; i < border.length / 2; i++)
+          top.vertex(border[i][0], border[i][1], border[i][2]);
+        top.endShape();
+      bottom.beginShape();
       stroke(purple);
       for (int i = 3; i < border.length; i++)
-        q.vertex(border[i][0], border[i][1], border[i][2]);
-      q.endShape();
+        bottom.vertex(border[i][0], border[i][1], border[i][2]);
+      bottom.endShape();
     } else if (this.sides == 2) {
-      p.beginShape(LINES);
+      top.beginShape(LINES);
       stroke(purple);
       for (int i = 1; i < border.length / 2; i++)
-        p.vertex(border[i][0], border[i][1], border[i][2]);
-      p.endShape();
-      q.beginShape(LINES);
+        top.vertex(border[i][0], border[i][1], border[i][2]);
+      top.endShape();
+      bottom.beginShape(LINES);
       stroke(purple);
       for (int i = 4; i < border.length; i++)
-        q.vertex(border[i][0], border[i][1], border[i][2]);
-      q.endShape();
+        bottom.vertex(border[i][0], border[i][1], border[i][2]);
+      bottom.endShape();
     } // if
-    if (p != null) shape(p);
-    if (q != null) shape(q);
+    if (top != null) shape(top);
+    if (bottom != null) shape(bottom);
     popMatrix();
   } // display
   
