@@ -18,7 +18,7 @@ Two experiments were run to test the magnitude and spatial expanse of the WCI ap
 Questions: (1) Would motion constrain or enhance the WCI? Furthermore, (2) how might placement of fringe both inside and outside MIC stimuli influence the spatial expanse of the WCI, considering placement inside does in 3-D appearing static stimuli?<sup>5</sup>
 
 <figure>
-	<img src="/figure/figure2.png" alt="Figure 2: Seven stimuli displayed in Experiments 1a and 1b" style="height: auto; width: 100%;"/>
+	<img src="/figures/figure2.png" alt="Figure 2: Seven stimuli displayed in Experiments 1a and 1b" style="height: auto; width: 100%;"/>
 	<figcaption><p align="center"><em>Figure 2: Seven stimuli displayed in Experiments 1a and 1b.</em></p><br/></figcaption>
 </figure>
 
@@ -30,7 +30,7 @@ Both studies consisted of two parts, neither of which had time constraints:
 2. **Handwritten Shading Measure:** Second, subjects viewed each of the seven stimuli once more, this time with the rating scales removed. Upon display of each stimulus, subjects were handed a white card with a black outline of the stimulus pictured on it and were instructed to shade in by hand any areas on the card which corresponded to regions of the on-screen stimulus where illusory color was perceived. This measure informed us about the perceived spatial expanse of the WCI.
 
 <figure>
-	<img src="/figure/figure3.png" alt="Figure 3: Example of rating scale display (left) and shading card (right)" style="height: auto; width: 100%;"/>
+	<img src="/figures/figure3.png" alt="Figure 3: Example of rating scale display (left) and shading card (right)" style="height: auto; width: 100%;"/>
 	<figcaption><p align="center"><em>Figure 3: Example of rating scale display (left) and shading card (right).</em></p><br/></figcaption>
 </figure>
 
@@ -38,25 +38,25 @@ Both studies consisted of two parts, neither of which had time constraints:
 A 2 (display type: moving vs. static) x 7 (stimulus) two-way mixed ANOVA on WCI magnitude estimates treating stimulus as a within-subject variable and display type as a between-subjects variable found no significant main effects or interaction indicating motion had no effect on the magnitude of the WCI.
 
 <figure>
-	<img src="/figure/figure4.png" alt="Figure 4: Average WCI magnitude ratings for moving and static conditions (error bars = 95% CI)" style="height: auto; width: 100%;"/>
+	<img src="/figures/figure4.png" alt="Figure 4: Average WCI magnitude ratings for moving and static conditions (error bars = 95% CI)" style="height: auto; width: 100%;"/>
 	<figcaption><p align="center"><em>Figure 4: Average WCI magnitude ratings for moving and static conditions (error bars = 95% CI).</em></p><br/></figcaption>
 </figure>
 
 <figure>
-	<img src="/figure/figure5.png" alt="Figure 5: Heat maps where saturation represents the proportion of participants who reported illusory color in that region" style="height: auto; width: 100%;"/>
+	<img src="/figures/figure5.png" alt="Figure 5: Heat maps where saturation represents the proportion of participants who reported illusory color in that region" style="height: auto; width: 100%;"/>
 	<figcaption><p align="center"><em>Figure 5: Heat maps where saturation represents the proportion of participants who reported illusory color in that region.</em></p><br/></figcaption>
 </figure>
 
 ## Discussion
 1. **Would motion constrain or enhance the WCI?**
 
-a. Motion had no influence on WCI magnitude and a negligible influence on its spatial expanse as shown in Figure 5.
+   a. Motion had no influence on WCI magnitude and a negligible influence on its spatial expanse as shown in Figure 5.
 
 2. **How might placement of fringe both inside and outside MIC stimuli influence the spatial expanse of the WCI?**
 
-a. Placement of incomplete fringe inside the MIC stimuli (e.g., stimuli 3 & 4) influenced the spatial expanse of the WCI like Hale & Brown (2021), creating an illusory colored edge containing the WCI between the incomplete fringe.
+   a. Placement of incomplete fringe inside the MIC stimuli (e.g., stimuli 3 & 4) influenced the spatial expanse of the WCI like Hale & Brown (2021), creating an illusory colored edge containing the WCI between the incomplete fringe.
 
-b. Placement of fringe by itself outside the MIC stimuli (e.g., stimuli 5-7) resulted in the discovery of a new type of WCI effect with color spreading in regions bounded only by the color fringe.
+   b. Placement of fringe by itself outside the MIC stimuli (e.g., stimuli 5-7) resulted in the discovery of a new type of WCI effect with color spreading in regions bounded only by the color fringe.
 
 The results related to fringe placement outside the MIC stimuli are surprising. It was not certain that the strength of the inferred surfaces in the MIC would be sufficient to enable the WCI to appear in regions lacking the contrasting border and inner fringe thought necessary to induce the illusion (e.g., stimuli 5-7). It remains to be shown which feature or features of the present stimuli explain the phenomenology reported. Most importantly, what implications does this have for current models of boundary and surface formation?
 
