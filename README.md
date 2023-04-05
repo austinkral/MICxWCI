@@ -66,11 +66,12 @@ The results related to fringe placement outside the MIC stimuli are surprising. 
 
 Recent work by Cohen-Duwek and Spitzer suggests that oriented double-opponent receptive fields (RFs) receive chromatic input from opponent RFs, yielding spatio-oriented-chromatic edge detectors in the early stages of visual processing which set the stage for the assimilative processes occurrent in the chromatic WCI.<sup>6</sup> While their model has been shown to be highly effective at predicting the phenomenology of color filling-in in the standard case (contrasting border and inner fringe), it is unclear whether it is sufficient to explain the filling-in of regions bounded by fringe but lacking a contrasting border. It is likely that global context, particularly the coincidence of the isolated fringe with the MIC edges, plays a central role. If this is the case, altering the rotation direction and orientation of the isolated fringe might inhibit or eliminate this effect.
 
-## References and Acknowledgments
+## Acknowledgments
 Thanks to:
-- <a href="https://jov.arvojournals.org/article.aspx?articleid=2720950" target="_blank">Gennady Erlikhman and Gideon P. Caplovitz (2019)</a> for sharing the source code for their MATLAB implementation of MIC stimuli.<sup>7</sup>
+- Gennady Erlikhman and Gideon P. Caplovitz (2019) for sharing the source code for their MATLAB implementation of MIC stimuli.<sup>7</sup>
 - <a href="https://sudhan.dev/" target="_blank">Sudhan Chitgopkar</a> for introducing me to <a href="https://processing.org/" target="_blank">Processing</a> and for help in troubleshooting.
 
+## References
 1. Pinna, B. (1987). Un effetto di colorazione. In V. Majer, M. Maeran, and M. Santinello, Il laboratorio e la città. XXI Congresso degli Psicologi Italiani, 158.
 2. Pinna, B., Brelstaff, G., & Spillman, L. (2001). <a href="https://www.sciencedirect.com/science/article/pii/S0042698901001055" target="_blank">Surface color from boundaries: a new “watercolor” illusion</a>. Vision Research, 41, 2669-2676.
 3. Broerse, J.; O'Shea, R. P. (1995). <a href="https://www.sciencedirect.com/science/article/pii/0042698994001315" target="_blank">Local and global factors in spatially-contingent coloured aftereffects</a>. Vision Research. 35 (2): 207–226.
