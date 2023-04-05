@@ -60,7 +60,7 @@ A 2 (display type: moving vs. static) x 7 (stimulus) two-way mixed ANOVA on WCI 
 
    a. Placement of incomplete fringe inside the MIC stimuli (e.g., stimuli 3 & 4) influenced the spatial expanse of the WCI like Hale & Brown (2021), creating an illusory colored edge containing the WCI between the incomplete fringe.
 
-   b. Placement of fringe by itself outside the MIC stimuli (e.g., stimuli 5-7) resulted in the discovery of * **a new type of WCI effect with color spreading in regions bounded only by the color fringe** *.
+   b. Placement of fringe by itself outside the MIC stimuli (e.g., stimuli 5-7) resulted in the discovery of ***a new type of WCI effect with color spreading in regions bounded only by the color fringe***.
 
 The results related to fringe placement outside the MIC stimuli are surprising. It was not certain that the strength of the inferred surfaces in the MIC would be sufficient to enable the WCI to appear in regions lacking the contrasting border and inner fringe thought necessary to induce the illusion (e.g., stimuli 5-7). It remains to be shown which feature or features of the present stimuli explain the phenomenology reported. Most importantly, what implications does this have for current models of boundary and surface formation?
 
