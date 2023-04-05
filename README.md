@@ -1,9 +1,9 @@
 # A Moving Watercolor Illusion
 
 ## Introduction
-The watercolor illusion (WCI) involves the perception of color where none physically exists.<sup>1,2,3</sup> For example, when white space is bordered by a dark purple outer line with a light orange inner line or fringe, the white space appears tinged by the color of the fringe (Figure 1). The WCI strongly influences perceptual organization and creates a strong figure-ground effect with the WCI regions perceived as figure. First reported by Pinna in 1987, research on the strength, spread, and figure-ground nature of the illusion has been under static conditions.
+**The watercolor illusion (WCI)** involves the perception of color where none physically exists.<sup>1,2,3</sup> For example, when white space is bordered by a dark purple outer line with a light orange inner line or fringe, the white space appears tinged by the color of the fringe (Figure 1). The WCI strongly influences perceptual organization and creates a strong figure-ground effect with the WCI regions perceived as figure. First reported by Pinna in 1987, research on the strength, spread, and figure-ground nature of the illusion has been under static conditions.
 
-The motion-induced contour (MIC) involves the perception of a contours and surfaces where none physically exist. First reported by Klymenko & Weisstein in 1981, it arises from the horizontal rotation of a partially outlined wireframe cube in space, with the frontmost vertical edge removed, resulting in the perception of an illusory contour in place of the missing vertical edge.4 A simpler MIC stimulus using only two chevrons corresponding to the two closest edges of the cube (Figure 2) results in the perception two moving surfaces confined by the MIC at one end and illusory edges at the other.
+**The motion-induced contour (MIC)** involves the perception of a contours and surfaces where none physically exist. First reported by Klymenko & Weisstein in 1981, it arises from the horizontal rotation of a partially outlined wireframe cube in space, with the frontmost vertical edge removed, resulting in the perception of an illusory contour in place of the missing vertical edge.4 A simpler MIC stimulus using only two chevrons corresponding to the two closest edges of the cube (Figure 2) results in the perception two moving surfaces confined by the MIC at one end and illusory edges at the other.
 
 <figure>
 	<img src="/figures/figure1.png" alt="Figure 1: The watercolor illusion (left) and motion-induced contour (right)" style="height: auto; width: 100%;"/>
@@ -15,7 +15,11 @@ To determine whether the WCI occurs in spatiotemporally dynamic stimuli. MIC sti
 
 Two experiments were run to test the magnitude and spatial expanse of the WCI applied to MIC under both moving (Experiment 1a, N=20) and static (Experiment 1b, N=20) conditions. 
 
-Questions: (1) Would motion constrain or enhance the WCI? Furthermore, (2) how might placement of fringe both inside and outside MIC stimuli influence the spatial expanse of the WCI, considering placement inside does in 3-D appearing static stimuli?<sup>5</sup>
+**Questions:**
+
+1. Would motion constrain or enhance the WCI?
+
+2. How might placement of fringe both inside and outside MIC stimuli influence the spatial expanse of the WCI, considering placement inside does in 3-D appearing static stimuli?<sup>5</sup>
 
 <figure>
 	<img src="/figures/figure2.png" alt="Figure 2: Seven stimuli displayed in Experiments 1a and 1b" style="height: auto; width: 100%;"/>
@@ -56,7 +60,7 @@ A 2 (display type: moving vs. static) x 7 (stimulus) two-way mixed ANOVA on WCI 
 
    a. Placement of incomplete fringe inside the MIC stimuli (e.g., stimuli 3 & 4) influenced the spatial expanse of the WCI like Hale & Brown (2021), creating an illusory colored edge containing the WCI between the incomplete fringe.
 
-   b. Placement of fringe by itself outside the MIC stimuli (e.g., stimuli 5-7) resulted in the discovery of a new type of WCI effect with color spreading in regions bounded only by the color fringe.
+   b. Placement of fringe by itself outside the MIC stimuli (e.g., stimuli 5-7) resulted in the discovery of * **a new type of WCI effect with color spreading in regions bounded only by the color fringe** *.
 
 The results related to fringe placement outside the MIC stimuli are surprising. It was not certain that the strength of the inferred surfaces in the MIC would be sufficient to enable the WCI to appear in regions lacking the contrasting border and inner fringe thought necessary to induce the illusion (e.g., stimuli 5-7). It remains to be shown which feature or features of the present stimuli explain the phenomenology reported. Most importantly, what implications does this have for current models of boundary and surface formation?
 
