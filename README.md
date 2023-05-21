@@ -69,6 +69,7 @@ Recent work by Cohen-Duwek and Spitzer suggests that oriented double-opponent re
 ## Acknowledgments
 Thanks to:
 - Gennady Erlikhman and Gideon P. Caplovitz (2019) for sharing the source code for their MATLAB implementation of MIC stimuli.<sup>7</sup>
+- The University of Georgia <a href="http://www.curo.uga.edu/" target="_blank">Center for Undergraduate Research Opportunities (CURO)</a> for their generous funding and support of the project. 
 - <a href="https://sudhan.dev/" target="_blank">Sudhan Chitgopkar</a> for introducing me to <a href="https://processing.org/" target="_blank">Processing</a> and for help in troubleshooting.
 
 ## References
